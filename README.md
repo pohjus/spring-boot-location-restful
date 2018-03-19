@@ -4,11 +4,11 @@ Simple RESTful API which displays some location information. Uses memory-based d
 
 ## Install and run
 
-Install first maven. Compile `mvn compile` and run `mvn spring-boot:run`. 
+Install first [Maven](https://maven.apache.org/download.cgi). Compile `mvn compile` and run `mvn spring-boot:run`. 
 
 ## Usage
 
-Install curl for testing.
+Install [curl](https://curl.haxx.se/) for testing.
 
 ### GET all locations
 
