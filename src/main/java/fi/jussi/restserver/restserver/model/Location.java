@@ -37,12 +37,36 @@ public class Location implements Serializable {
         return latitude;
     }
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
+
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
     public double getLongitude() {
         return longitude;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Location location = (Location) o;
+
+        return id == location.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 
     public void setLongitude(double longitude) {

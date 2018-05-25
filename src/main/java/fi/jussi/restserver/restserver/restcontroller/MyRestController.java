@@ -12,6 +12,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 /**
  * Class Description.
@@ -24,6 +25,7 @@ public class MyRestController {
     @Autowired
     MyDatabaseHandler database;
 
+    /*
     @PostConstruct
     public void init() {
         for(int i=0; i<5; i++) {
@@ -33,13 +35,13 @@ public class MyRestController {
             database.save(new Location(lat, lon));
         }
     }
-
+*/
     // curl http://localhost:8080/api/locations/1
     @RequestMapping(value = "/api/locations/{locationId}",  method= RequestMethod.GET)
     public ResponseEntity<Location> fetchLocation(@PathVariable long locationId) throws CannotFindLocationException {
-        Location location = database.findOne(locationId);
-        if(location != null)
-            return new ResponseEntity<Location>(location, HttpStatus.OK);
+        Optional<Location> location = database.findById(locationId);
+        if(location.isPresent())
+            return new ResponseEntity<Location>(location.get(), HttpStatus.OK);
         else
             throw new CannotFindLocationException(locationId);
     }
@@ -54,8 +56,8 @@ public class MyRestController {
     // curl -X DELETE http://localhost:8080/api/locations/1
     @RequestMapping(value = "/api/locations/{locationId}",  method= RequestMethod.DELETE)
     public ResponseEntity<Void> deleteLocation(@PathVariable long locationId) throws CannotFindLocationException {
-        if(database.exists(locationId)) {
-            database.delete(locationId);
+        if(database.existsById(locationId)) {
+            database.deleteById(locationId);
             return new ResponseEntity<Void>(HttpStatus.OK);
         } else {
             throw new CannotFindLocationException(locationId);
@@ -68,7 +70,7 @@ public class MyRestController {
         database.save(location);
 
         UriComponents uriComponents =
-                b.path("/locations/{id}").buildAndExpand(location.getId());
+                b.path("/api/locations/{id}").buildAndExpand(location.getId());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uriComponents.toUri());

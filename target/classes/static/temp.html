@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+<div id="root"></div>
+
+
+<script type="text/babel">
+
+    class StarWarsCharacter extends React.Component {
+        constructor(props) {
+            super(props);
+            let starWarsCharacterData = {"name": "", "height": ""}
+
+            this.state = {"character": starWarsCharacterData}
+        }
+        componentDidMount() {
+            let id = this.props.id
+            fetch(`http://swapi.co/api/people/${id}`).then(
+                (resp) => resp.json()).then((jsonObject)=> {
+                let starWarsCharacterData = {"name": jsonObject.name, "height": jsonObject.height}
+                this.setState({"character": starWarsCharacterData})
+            })
+        }
+        render() {
+            return (<p>name = {this.state.character.name}, height = {this.state.character.height}</p>);
+        }
+    }
+
+    ReactDOM.render(
+            <StarWarsCharacter id="1" />, document.getElementById('root')
+    );
+
+</script>
+
+</body>
+</html>

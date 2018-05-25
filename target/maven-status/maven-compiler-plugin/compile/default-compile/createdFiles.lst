@@ -1,0 +1,9 @@
+fi/jussi/restserver/restserver/configuration/MyConfiguration.class
+fi/jussi/restserver/restserver/restcontroller/ErrorInfo.class
+fi/jussi/restserver/restserver/model/Location.class
+fi/jussi/restserver/restserver/repository/MyDatabaseHandler.class
+fi/jussi/restserver/restserver/restcontroller/MyRestController.class
+fi/jussi/restserver/restserver/configuration/MyConfiguration$1.class
+fi/jussi/restserver/restserver/restcontroller/MyExceptionHandler.class
+fi/jussi/restserver/restserver/repository/CannotFindLocationException.class
+fi/jussi/restserver/restserver/RestServerApplication.class
