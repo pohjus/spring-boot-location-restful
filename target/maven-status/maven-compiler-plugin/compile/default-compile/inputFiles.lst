@@ -1,8 +1,0 @@
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/RestServerApplication.java
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/repository/MyDatabaseHandler.java
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/restcontroller/MyRestController.java
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/model/Location.java
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/configuration/MyConfiguration.java
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/restcontroller/MyExceptionHandler.java
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/restcontroller/ErrorInfo.java
-/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/repository/CannotFindLocationException.java
