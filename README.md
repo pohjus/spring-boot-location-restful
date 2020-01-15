@@ -1,14 +1,20 @@
 # RESTful API (Spring Boot)
 
-Simple RESTful API which displays some location information. Uses memory-based database (derby).
+Simple RESTful API which displays some location information. Uses memory-based database (H2 Database).
+
+## Requirements
+
+- Maven
+- Java 11
+- curl (for testing)
 
 ## Install and run
 
-Install first [Maven](https://maven.apache.org/download.cgi). Compile `mvn compile` and run `mvn spring-boot:run`. 
+`git clone https://github.com/pohjus/spring-boot-location-restful``
+`mvn compile`
+`mvn spring-boot:run`
 
-## Usage
-
-Install [curl](https://curl.haxx.se/) for testing.
+## Test
 
 ### GET all locations
 
