@@ -1,8 +1,8 @@
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/configuration/MyConfiguration.java
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/repository/MyDatabaseHandler.java
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/repository/CannotFindLocationException.java
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/restcontroller/ErrorInfo.java
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/restcontroller/MyRestController.java
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/restcontroller/MyExceptionHandler.java
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/RestServerApplication.java
-/Users/jussi/Documents/course-material-new/front-end-mestari/rest-server/back-end/src/main/java/fi/jussi/restserver/restserver/model/Location.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/RestServerApplication.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/repository/MyDatabaseHandler.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/restcontroller/MyRestController.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/model/Location.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/configuration/MyConfiguration.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/restcontroller/MyExceptionHandler.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/restcontroller/ErrorInfo.java
+/Users/pohjus/Desktop/spring-boot-location-restful/src/main/java/fi/jussi/restserver/restserver/repository/CannotFindLocationException.java
