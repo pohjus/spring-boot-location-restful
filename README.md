@@ -11,6 +11,7 @@ Simple RESTful API which displays some location information. Uses memory-based d
 ## Install and run
 
 - `git clone https://github.com/pohjus/spring-boot-location-restful`
+- `cd spring-boot-location-restful`
 - `mvn compile`
 - `mvn spring-boot:run`
 
