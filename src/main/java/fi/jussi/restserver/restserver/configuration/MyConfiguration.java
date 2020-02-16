@@ -18,20 +18,3 @@ public class MyConfiguration implements WebMvcConfigurer {
                 .allowedMethods("GET", "OPTIONS", "POST", "PUT", "DELETE");
     }
 }
-
-/*
-@Configuration
-public class MyConfiguration {
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "OPTIONS", "POST", "PUT", "DELETE");
-            }
-        };
-    }
-}*/
