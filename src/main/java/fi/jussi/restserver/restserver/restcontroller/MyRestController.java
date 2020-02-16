@@ -25,17 +25,15 @@ public class MyRestController {
     @Autowired
     MyDatabaseHandler database;
 
-    /*
     @PostConstruct
     public void init() {
         for(int i=0; i<5; i++) {
-            double lat = (Math.random() * (85+85)) - 85;
-            double lon = (Math.random() * (180+180)) - 180;
-
+            double lat = (Math.random() * (85 + 85)) - 85;
+            double lon = (Math.random() * (180 + 180)) - 180;
             database.save(new Location(lat, lon));
         }
     }
-*/
+
     // curl http://localhost:8080/api/locations/1
     @RequestMapping(value = "/api/locations/{locationId}",  method= RequestMethod.GET)
     public ResponseEntity<Location> fetchLocation(@PathVariable long locationId) throws CannotFindLocationException {
@@ -47,7 +45,6 @@ public class MyRestController {
     }
 
     // curl http://localhost:8080/api/locations/
-
     @RequestMapping(value = "/api/locations/",  method= RequestMethod.GET)
     public Iterable<Location> fetchAll() {
         return database.findAll();
@@ -77,6 +74,4 @@ public class MyRestController {
 
         return new ResponseEntity<Location>(location, headers, HttpStatus.CREATED);
     }
-
-
 }

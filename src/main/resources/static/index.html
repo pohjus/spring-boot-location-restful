@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HTML5 Page</title>
+</head>
+<body>
+<h1>Locations</h1>
+<ul></ul>
+<script>
+fetch('http://localhost:8080/api/locations/').then(hr => hr.json()).then(data => {
+    console.log(data)
+    let ul = document.querySelector('ul')
+    ul.innerHTML = data.map(loc => `<li>latitude: ${loc.latitude}, longitude: ${loc.longitude}</li>`).join("\n")
+})
+</script>
+</body>
+</html>
