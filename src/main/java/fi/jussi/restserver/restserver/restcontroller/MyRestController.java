@@ -10,16 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.annotation.PostConstruct;
 import java.util.Optional;
 
-/**
- * Class Description.
- *
- * @author Jussi Pohjolainen
- * @version 2017-10-09
- */
+@CrossOrigin
 @RestController
 public class MyRestController {
     @Autowired
