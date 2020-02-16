@@ -13,6 +13,8 @@ public class MyConfiguration implements WebMvcConfigurer {
  
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        // This is now done in the rest controller itself. TODO: remove the class.
+        
         /*registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowedMethods("GET", "OPTIONS", "POST", "PUT", "DELETE");*/
