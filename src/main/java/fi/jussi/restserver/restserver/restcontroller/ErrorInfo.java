@@ -1,27 +1,20 @@
 package fi.jussi.restserver.restserver.restcontroller;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
- * Class Description.
- *
- * @author Jussi Pohjolainen
- * @version 2017-10-09
+ * Helper POJO for generating error messages.
  */
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ErrorInfo {
     private String errorMsg;
-
-    public ErrorInfo() {}
-
-    public ErrorInfo(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
 }
 
 

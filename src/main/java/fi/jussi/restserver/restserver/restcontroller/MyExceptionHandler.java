@@ -14,8 +14,8 @@ public class MyExceptionHandler {
 
     @ExceptionHandler(CannotFindLocationException.class)
     public ResponseEntity<ErrorInfo> handleConflict(CannotFindLocationException ex) {
-        ErrorInfo e = new ErrorInfo("Could not found location with id " + ex.getLocationId());
-        return new ResponseEntity<ErrorInfo>(e, HttpStatus.NOT_FOUND);
+        var errorInfo = new ErrorInfo("Could not found location with id " + ex.getLocationId());
+        return new ResponseEntity<ErrorInfo>(errorInfo, HttpStatus.NOT_FOUND);
     }
 }
 
