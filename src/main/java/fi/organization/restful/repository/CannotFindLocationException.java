@@ -1,4 +1,4 @@
-package fi.jussi.restserver.restserver.repository;
+package fi.organization.restful.repository;
 
 /**
  * Exception for if location is not found from the database.

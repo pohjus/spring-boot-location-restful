@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-	<groupId>fi.jussi.restserver</groupId>
-	<artifactId>rest-server</artifactId>
+	<groupId>fi.organization.restful</groupId>
+	<artifactId>restful</artifactId>
 	<version>0.9</version>
 	<packaging>jar</packaging>
 

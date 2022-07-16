@@ -1,4 +1,4 @@
-package fi.jussi.restserver.restserver.model;
+package fi.organization.restful.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

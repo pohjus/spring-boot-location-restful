@@ -1,6 +1,6 @@
-package fi.jussi.restserver.restserver.repository;
+package fi.organization.restful.repository;
 
-import fi.jussi.restserver.restserver.model.Location;
+import fi.organization.restful.model.Location;
 import org.springframework.data.repository.CrudRepository;
 
 /**

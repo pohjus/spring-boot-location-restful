@@ -1,6 +1,6 @@
-package fi.jussi.restserver.restserver.restcontroller;
+package fi.organization.restful.restcontroller;
 
-import fi.jussi.restserver.restserver.repository.CannotFindLocationException;
+import fi.organization.restful.repository.CannotFindLocationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

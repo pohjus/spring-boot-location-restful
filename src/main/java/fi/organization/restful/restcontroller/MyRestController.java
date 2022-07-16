@@ -1,9 +1,9 @@
-package fi.jussi.restserver.restserver.restcontroller;
+package fi.organization.restful.restcontroller;
 
-import fi.jussi.restserver.restserver.model.Location;
-import fi.jussi.restserver.restserver.repository.CannotFindLocationException;
-import fi.jussi.restserver.restserver.repository.MyDatabaseHandler;
-import fi.jussi.restserver.restserver.util.RandomGenerator;
+import fi.organization.restful.model.Location;
+import fi.organization.restful.repository.CannotFindLocationException;
+import fi.organization.restful.repository.MyDatabaseHandler;
+import fi.organization.restful.util.RandomGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

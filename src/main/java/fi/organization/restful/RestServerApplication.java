@@ -1,4 +1,4 @@
-package fi.jussi.restserver.restserver;
+package fi.organization.restful;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

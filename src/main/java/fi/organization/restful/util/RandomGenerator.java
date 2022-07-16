@@ -1,4 +1,4 @@
-package fi.jussi.restserver.restserver.util;
+package fi.organization.restful.util;
 
 import java.util.Random;
 

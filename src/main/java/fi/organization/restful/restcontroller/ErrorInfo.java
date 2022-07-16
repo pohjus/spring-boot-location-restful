@@ -1,4 +1,4 @@
-package fi.jussi.restserver.restserver.restcontroller;
+package fi.organization.restful.restcontroller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
