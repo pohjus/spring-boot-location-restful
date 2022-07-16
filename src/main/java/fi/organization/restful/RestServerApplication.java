@@ -30,10 +30,12 @@ public class RestServerApplication {
                     INSTRUCTIONS
                     ------------
                     
+                    POPULATE and RANDOMIZE five (5) locations to database
+                        curl http://localhost:8080/api/locations/randomize/5
                     GET all locations
-                        curl -X GET %s/%s/%s/
+                        curl %s/%s/%s/
                     GET one location
-                        curl -X GET http://localhost:8080/api/locations/1
+                        curl http://localhost:8080/api/locations/1
                     DELETE one location
                         curl -X DELETE http://localhost:8080/api/locations/1
                     POST one location
