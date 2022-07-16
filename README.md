@@ -5,7 +5,7 @@ Simple RESTful API which displays some location information. Uses memory-based d
 ## Requirements
 
 - Maven
-- Java 11
+- Java 17
 - curl (for testing)
 
 ## Install and run
