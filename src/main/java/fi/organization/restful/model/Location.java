@@ -8,9 +8,6 @@ import javax.persistence.Id;
 
 /**
  * Pojo for the RESTful api.
- *
- * @author Jussi Pohjolainen
- * @version 2022-07-16
  */
 @Entity
 @Getter

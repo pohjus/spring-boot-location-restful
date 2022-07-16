@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -32,11 +33,9 @@ public class MyRestController {
     public Iterable<Location> populate(@PathVariable int amount) {
         database.deleteAll();
 
-        var list = new ArrayList<Location>(amount);
-        // TODO, functional approach?
-        for(int i=0; i<amount; i++) {
-            list.add(new Location(RandomGenerator.rand(-90,90), RandomGenerator.rand(-180,180)));
-        }
+        var list = IntStream.range(0, amount)
+                .mapToObj(number -> new Location(RandomGenerator.rand(-90,90), RandomGenerator.rand(-180,180))) // or x -> new Object(x).. or any other constructor
+                .collect(Collectors.toList());
 
         database.saveAll(list);
         return list;
