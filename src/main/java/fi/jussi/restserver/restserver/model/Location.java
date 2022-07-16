@@ -1,18 +1,25 @@
 package fi.jussi.restserver.restserver.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 /**
- * Class Description.
+ * Pojo for the RESTful api.
  *
  * @author Jussi Pohjolainen
- * @version 2017-10-09
+ * @version 2022-07-16
  */
 @Entity
-public class Location implements Serializable {
+@Getter
+@Setter
+@NoArgsConstructor
+public class Location {
 
     @Id
     @GeneratedValue
@@ -21,55 +28,9 @@ public class Location implements Serializable {
     private double latitude;
     private double longitude;
 
-    public long getId() {
-        return this.id;
-    }
-
-    public Location() {
-    }
 
     public Location(double latitude, double longitude) {
         this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    @Override
-    public String toString() {
-        return "Location{" +
-                "id=" + id +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                '}';
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Location location = (Location) o;
-
-        return id == location.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return (int) (id ^ (id >>> 32));
-    }
-
-    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }
