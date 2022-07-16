@@ -66,6 +66,16 @@ public class MyRestController {
     }
 
     /**
+     * HTTP GET for all locations that match with given latitude.
+     *
+     * @return all the locations.
+     */
+    @RequestMapping(value = "/api/locations/latitude/{latitude}",  method = RequestMethod.GET)
+    public Iterable<Location> fetchByLatitude(@PathVariable double latitude) {
+        return database.findByLatitude(latitude);
+    }
+
+    /**
      * HTTP Delete one location.
      *
      * @param locationId location to be deleted.
