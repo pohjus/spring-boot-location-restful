@@ -25,17 +25,7 @@ public class MyRestController {
     @Autowired
     MyDatabaseHandler database;
 
-    /**
-     * Generates random locations to the database.
-     */
-    @PostConstruct
-    public void init() {
-        for(int i=0; i<5; i++) {
-            database.save(new Location(RandomGenerator.rand(-90, 90), RandomGenerator.rand(-180, 180)));
-        }
-    }
 
-    // curl http://localhost:8080/api/locations/1
 
     /**
      * HTTP GET for one location.
