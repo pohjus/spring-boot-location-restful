@@ -4,10 +4,7 @@ import fi.jussi.restserver.restserver.model.Location;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Class Description.
- *
- * @author Jussi Pohjolainen
- * @version 2017-10-09
+ * Interface for handling create, read, update and delete from database.
  */
 public interface MyDatabaseHandler extends CrudRepository<Location, Long> {
 
