@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
- * Class Description.
- *
- * @author Jussi Pohjolainen
- * @version 2017-10-09
+ * Helper class for generating error messages.
  */
 @ControllerAdvice
 public class MyExceptionHandler {
