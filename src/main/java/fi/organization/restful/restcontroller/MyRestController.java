@@ -19,6 +19,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static fi.organization.restful.util.RandomGenerator.rand;
+import static java.util.stream.Collectors.toList;
+
 /**
  * REST Controller.
  */
@@ -28,14 +31,20 @@ public class MyRestController {
     @Autowired
     MyDatabaseHandler database;
 
-
     @GetMapping("/api/locations/randomize/{amount}")
     public Iterable<Location> populate(@PathVariable int amount) {
         database.deleteAll();
 
+        final byte LATITUDE_MIN = -90;
+        final byte LATITUDE_MAX = +90;
+
+        final short LONGITUDE_MIN = -180;
+        final short LONGITUDE_MAX = +180;
+
+
         var list = IntStream.range(0, amount)
-                .mapToObj(number -> new Location(RandomGenerator.rand(-90,90), RandomGenerator.rand(-180,180))) // or x -> new Object(x).. or any other constructor
-                .collect(Collectors.toList());
+                .mapToObj(n -> new Location(rand(LATITUDE_MIN, LATITUDE_MAX), rand(LONGITUDE_MIN, LONGITUDE_MAX)))
+                .collect(toList());
 
         database.saveAll(list);
         return list;
@@ -50,9 +59,9 @@ public class MyRestController {
      */
     @GetMapping("/api/locations/{locationId}")
     public ResponseEntity<Location> fetchLocation(@PathVariable long locationId) throws CannotFindLocationException {
-        Optional<Location> location = database.findById(locationId);
+        var location = database.findById(locationId);
 
-        if(!location.isPresent())
+        if(location.isEmpty())
             throw new CannotFindLocationException(locationId);
 
         return new ResponseEntity<Location>(location.get(), HttpStatus.OK);
@@ -107,10 +116,10 @@ public class MyRestController {
     public  ResponseEntity<Location> save(@RequestBody Location location, UriComponentsBuilder uriComponentsBuilder) {
         database.save(location);
 
-        UriComponents uriComponents =
+        var uriComponents =
                 uriComponentsBuilder.path("/api/locations/{id}").buildAndExpand(location.getId());
 
-        HttpHeaders headers = new HttpHeaders();
+        var headers = new HttpHeaders();
         headers.setLocation(uriComponents.toUri());
 
         return new ResponseEntity<Location>(location, headers, HttpStatus.CREATED);
