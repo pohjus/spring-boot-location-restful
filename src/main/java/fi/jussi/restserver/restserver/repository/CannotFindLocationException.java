@@ -1,10 +1,7 @@
 package fi.jussi.restserver.restserver.repository;
 
 /**
- * Class Description.
- *
- * @author Jussi Pohjolainen
- * @version 2017-10-09
+ * Exception for if location is not found from the database.
  */
 public class CannotFindLocationException extends IllegalArgumentException {
 
