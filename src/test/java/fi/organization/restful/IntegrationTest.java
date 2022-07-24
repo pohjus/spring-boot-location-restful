@@ -13,7 +13,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -39,6 +41,13 @@ public class IntegrationTest {
 
         // Let's see if database is empty
         assertTrue(!repository.findById(1L).isPresent(), "database was not empty");
+    }
+
+    @Test
+    public void httpGetOne() throws Exception {
+        var loc = new Location(50,50);
+        repository.save(loc);
+        mockMvc.perform(get("/api/locations/1")).andExpect(content().json(objectMapper.writeValueAsString(loc)));
     }
 
 }

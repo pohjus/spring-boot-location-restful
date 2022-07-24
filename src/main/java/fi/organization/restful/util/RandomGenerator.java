@@ -4,9 +4,6 @@ import java.util.Random;
 
 /**
  * Simple class containing random functionality.
- *
- * @author Jussi Pohjolainen
- * @version 2022-07-16
  */
 public class RandomGenerator {
     /**
@@ -15,7 +12,7 @@ public class RandomGenerator {
      * @param `max` The ending value of the range (inclusive)
      */
     public static int rand(int min, int max) {
-        if (min > max || (max - min + 1 > Integer.MAX_VALUE))
+        if (min > max)
             throw new IllegalArgumentException("Invalid range");
 
         return new Random().nextInt(max - min + 1) + min;
