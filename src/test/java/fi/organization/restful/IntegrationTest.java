@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -66,5 +66,30 @@ public class IntegrationTest {
         mockMvc.perform(get("/api/locations/"))
                 .andExpect(content().json(objectMapper.writeValueAsString(list)))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void httpPostTest() throws Exception {
+        var dummyLocation = """
+                { "latitude": 40, "longitude": 40 }
+                """;
+
+        mockMvc.perform(post("/api/locations/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(dummyLocation))
+                .andExpect(status().isCreated());
+
+        // did it update the database?
+
+        var addedCustomer = repository.findById(1L);
+
+        assertTrue(addedCustomer.isPresent());
+
+        var customer = addedCustomer.get();
+
+        assertEquals(customer.getId(), 1);
+        assertEquals(customer.getLatitude(), 40);
+        assertEquals(customer.getLongitude(), 40);
+
     }
 }
