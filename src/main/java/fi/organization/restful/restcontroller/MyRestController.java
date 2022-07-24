@@ -35,15 +35,9 @@ public class MyRestController {
     public Iterable<Location> populate(@PathVariable int amount) {
         database.deleteAll();
 
-        final byte LATITUDE_MIN = -90;
-        final byte LATITUDE_MAX = +90;
-
-        final short LONGITUDE_MIN = -180;
-        final short LONGITUDE_MAX = +180;
-
-
         var list = IntStream.range(0, amount)
-                .mapToObj(n -> new Location(rand(LATITUDE_MIN, LATITUDE_MAX), rand(LONGITUDE_MIN, LONGITUDE_MAX)))
+                .mapToObj(n -> new Location(rand(Location.LATITUDE_MIN, Location.LATITUDE_MAX),
+                        rand(Location.LONGITUDE_MIN, Location.LONGITUDE_MAX)))
                 .collect(toList());
 
         database.saveAll(list);

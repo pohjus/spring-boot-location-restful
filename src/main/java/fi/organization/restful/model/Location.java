@@ -16,6 +16,12 @@ import javax.persistence.Id;
 @RequiredArgsConstructor
 public class Location {
 
+    public static final byte LATITUDE_MIN = -90;
+    public static final byte LATITUDE_MAX = +90;
+
+    public static final short LONGITUDE_MIN = -180;
+    public static final short LONGITUDE_MAX = +180;
+
     @Id
     @GeneratedValue
     private long id;
