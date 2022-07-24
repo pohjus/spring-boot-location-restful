@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -40,14 +41,15 @@ public class IntegrationTest {
         mockMvc.perform(delete("/api/locations/1")).andExpect(status().isNoContent());
 
         // Let's see if database is empty
-        assertTrue(!repository.findById(1L).isPresent(), "database was not empty");
+        assertFalse(repository.findById(1L).isPresent(), "database was not empty");
     }
 
     @Test
     public void httpGetOne() throws Exception {
         var loc = new Location(50,50);
         repository.save(loc);
-        mockMvc.perform(get("/api/locations/1")).andExpect(content().json(objectMapper.writeValueAsString(loc)));
+        mockMvc.perform(get("/api/locations/1"))
+                .andExpect(content().json(objectMapper.writeValueAsString(loc)));
     }
 
 }
