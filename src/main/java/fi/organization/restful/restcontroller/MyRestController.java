@@ -38,7 +38,7 @@ public class MyRestController {
         var list = IntStream.range(0, amount)
                 .mapToObj(n -> new Location(rand(Location.LATITUDE_MIN, Location.LATITUDE_MAX),
                         rand(Location.LONGITUDE_MIN, Location.LONGITUDE_MAX)))
-                .collect(toList());
+                .toList();
 
         database.saveAll(list);
         return list;
