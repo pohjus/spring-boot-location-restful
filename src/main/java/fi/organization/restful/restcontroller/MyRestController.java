@@ -3,7 +3,6 @@ package fi.organization.restful.restcontroller;
 import fi.organization.restful.model.Location;
 import fi.organization.restful.repository.CannotFindLocationException;
 import fi.organization.restful.repository.MyDatabaseHandler;
-import fi.organization.restful.util.RandomGenerator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -15,19 +14,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.annotation.PostConstruct;
-import java.awt.print.Book;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static fi.organization.restful.util.RandomGenerator.rand;
-import static java.util.stream.Collectors.toList;
 
 /**
  * REST Controller.
