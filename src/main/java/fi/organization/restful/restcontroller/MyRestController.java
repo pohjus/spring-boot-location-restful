@@ -4,6 +4,12 @@ import fi.organization.restful.model.Location;
 import fi.organization.restful.repository.CannotFindLocationException;
 import fi.organization.restful.repository.MyDatabaseHandler;
 import fi.organization.restful.util.RandomGenerator;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.annotation.PostConstruct;
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,6 +38,11 @@ public class MyRestController {
     @Autowired
     MyDatabaseHandler database;
 
+    @Operation(summary = "Populate the database with random number of locations.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Locations created",
+                    content = { @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Location.class)))})})
     @GetMapping("/api/locations/randomize/{amount}")
     public Iterable<Location> populate(@PathVariable int amount) {
         database.deleteAll();
@@ -51,6 +63,14 @@ public class MyRestController {
      * @return status code 200 and the resource.
      * @throws CannotFindLocationException if location is not found.
      */
+
+    @Operation(summary = "Get a location by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the location",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Location.class)) }),
+            @ApiResponse(responseCode = "404", description = "Location not found",
+                    content = @Content) })
     @GetMapping("/api/locations/{locationId}")
     public ResponseEntity<Location> fetchLocation(@PathVariable long locationId) throws CannotFindLocationException {
         var location = database.findById(locationId);
@@ -67,6 +87,12 @@ public class MyRestController {
      *
      * @return all the locations.
      */
+
+    @Operation(summary = "Get all locations")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all locations",
+                    content = { @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Location.class)))})})
     @GetMapping("/api/locations/")
     public Iterable<Location> fetchAll() {
         return database.findAll();
@@ -77,6 +103,12 @@ public class MyRestController {
      *
      * @return all the locations.
      */
+
+    @Operation(summary = "Get all locations by given latitude.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all locations",
+                    content = { @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Location.class)))})})
     @GetMapping("/api/locations/latitude/{latitude}")
     public Iterable<Location> fetchByLatitude(@PathVariable double latitude) {
         return database.findByLatitude(latitude);
@@ -89,6 +121,12 @@ public class MyRestController {
      * @return status code no content (204).
      * @throws CannotFindLocationException if location is not found.
      */
+
+    @Operation(summary = "Delete a location by it's id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Deleted the location",
+                    content = { @Content(mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", description = "Location not found") })
     @DeleteMapping("/api/locations/{locationId}")
     public ResponseEntity<Void> deleteLocation(@PathVariable long locationId) throws CannotFindLocationException {
         if(!database.existsById(locationId))
@@ -106,6 +144,11 @@ public class MyRestController {
      * @param uriComponentsBuilder To create http status location with proper url.
      * @return The added object and status code 201.
      */
+
+    @Operation(summary = "Add a new location.")
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Created a location") })
     @PostMapping("/api/locations/")
     public  ResponseEntity<Location> save(@RequestBody Location location, UriComponentsBuilder uriComponentsBuilder) {
         database.save(location);
