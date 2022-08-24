@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +19,15 @@ import java.util.Map;
  * Displays some simple instructions to console when app starts.
  */
 @SpringBootApplication
+@EnableScheduling
 public class RestServerApplication {
+    static Log logger = LogFactory.getLog(RestServerApplication.class);
+
+    @Scheduled(fixedDelay = 1000)
+    public void scheduleFixedDelayTask() {
+        logger.debug("Testing scheduling");
+    }
+
 
     public static String SERVER = "http://localhost:8080";
     public static String BASEURL = "api";
@@ -32,7 +42,6 @@ public class RestServerApplication {
     public CommandLineRunner displayInfo() {
 
         return (String... args) -> {
-            var logger = LogFactory.getLog(RestServerApplication.class);
 
 
             var valuesMap = Map.of("server", SERVER, "baseurl", BASEURL, "resource", RESOURCE);
