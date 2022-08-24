@@ -5,14 +5,29 @@
   <title>HTML5 Page</title>
 </head>
 <body>
-<h1>Locations</h1>
+<h1>Simple Frontend</h1>
+
+<button>Add new Locations</button>
+
 <ul></ul>
+
 <script>
-fetch('http://localhost:8080/api/locations/').then(hr => hr.json()).then(data => {
-    console.log(data)
-    let ul = document.querySelector('ul')
-    ul.innerHTML = data.map(loc => `<li>latitude: ${loc.latitude}, longitude: ${loc.longitude}</li>`).join("\n")
+
+
+document.querySelector("button").addEventListener("click", () => {
+    httpCall("/api/locations/randomize/5")
 })
+
+const httpCall = async (url) => {
+    let hr = await fetch(url)
+    let locations = await hr.json()
+    document.querySelector("ul").innerHTML =
+       locations.map(loc => `<li>latitude: ${loc.latitude}, longitude: ${loc.longitude}</li>`).join("\n")
+}
+
+httpCall("/api/locations/")
+
+
 </script>
 </body>
 </html>
